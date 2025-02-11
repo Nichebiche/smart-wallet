@@ -108,5 +108,25 @@ Then run
 make deploy
 ```
 
+## Setting Environment Variables
+
+To set your environment variables for deploying the smart wallet, you need to configure the `.env` file with the following variables:
+
+* `ACCOUNT`: This should be set to the name of your `cast wallet`. You can find more details on how to set up a `cast wallet` in the Foundry documentation.
+* `RPC_URL`: This should be set to the RPC URL of the node you are using to deploy the smart wallet.
+* `ETHERSCAN_API_KEY`: This is optional and should be set to your Etherscan API key if you want to verify the contract on Etherscan.
+
+Here is an example of what your `.env` file might look like:
+
+```plaintext
+ACCOUNT=your_cast_wallet_name
+RPC_URL=https://your_rpc_url
+ETHERSCAN_API_KEY=your_etherscan_api_key
+```
+
+Make sure to replace `your_cast_wallet_name`, `your_rpc_url`, and `your_etherscan_api_key` with your actual values.
+
+For more details, you can refer to the `Makefile` and the `README.md` files in the repository.
+
 ## Influences
 Much of the code in this repository started from Solady's [ERC4337](https://github.com/Vectorized/solady/blob/main/src/accounts/ERC4337.sol) implementation. We were also influenced by [DaimoAccount](https://github.com/daimo-eth/daimo/blob/master/packages/contract/src/DaimoAccount.sol), which pioneered using passkey signers on ERC-4337 accounts, and [LightAccount](https://github.com/alchemyplatform/light-account).
