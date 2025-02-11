@@ -128,5 +128,9 @@ Make sure to replace `your_cast_wallet_name`, `your_rpc_url`, and `your_ethersca
 
 For more details, you can refer to the `Makefile` and the `README.md` files in the repository.
 
+## Notes
+- Remove sensitive information from the `.env` file and use environment variables instead.
+- Add a `.env.example` file to provide a template for required environment variables without exposing sensitive information.
+
 ## Influences
 Much of the code in this repository started from Solady's [ERC4337](https://github.com/Vectorized/solady/blob/main/src/accounts/ERC4337.sol) implementation. We were also influenced by [DaimoAccount](https://github.com/daimo-eth/daimo/blob/master/packages/contract/src/DaimoAccount.sol), which pioneered using passkey signers on ERC-4337 accounts, and [LightAccount](https://github.com/alchemyplatform/light-account).
