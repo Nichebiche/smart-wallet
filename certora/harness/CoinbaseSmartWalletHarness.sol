@@ -1,4 +1,3 @@
-// SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.23;
 
 import { CoinbaseSmartWallet } from "src/CoinbaseSmartWallet.sol";
@@ -46,5 +45,19 @@ contract CoinbaseSmartWalletHarness is CoinbaseSmartWallet {
 
     function compareBytes(bytes memory a, bytes memory b) public pure returns (bool) {
         return keccak256(a) == keccak256(b);
+    }
+
+    // Implement access control mechanisms
+    modifier onlyAuthorized() {
+        require(isOwnerAddress(msg.sender), "Unauthorized: Only authorized users can perform this action");
+        _;
+    }
+
+    function deployContract(address newImplementation, bytes calldata data) external onlyAuthorized {
+        upgradeToAndCall(newImplementation, data);
+    }
+
+    function manageContract(address target, uint256 value, bytes calldata data) external onlyAuthorized {
+        _call(target, value, data);
     }
 }
